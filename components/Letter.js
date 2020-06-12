@@ -82,13 +82,13 @@ export default function Letter({ emails, subject, body }) {
       exit={{ opacity: 0, scale: 0.2, y: 300 }}
     >
       <Box
-        borderRadius="8px"
+        borderRadius="12px"
         padding="12px"
         pb={["12px", "12px", "2px", "2px"]}
         backgroundColor="gray.100"
       >
         <Flex
-          borderRadius="8px"
+          borderRadius="12px"
           backgroundColor="white"
           width="100%"
           flexDirection={["column", "column", "row", "row"]}
@@ -99,10 +99,10 @@ export default function Letter({ emails, subject, body }) {
           </Text>
           <Textarea
             paddingLeft={["12px", "12px", "2px", "2px"]}
-            borderRadius="8px"
             borderWidth="0px"
             resize="none"
             minHeight={["100px", "80px", "80px", "80px"]}
+            borderRadius="12px"
             value={emailAddresses}
           ></Textarea>
           <Button
@@ -118,10 +118,10 @@ export default function Letter({ emails, subject, body }) {
           </Button>
         </Flex>
         <Flex
-          borderRadius="8px"
           backgroundColor="white"
           width="100%"
           flexDirection={["column", "column", "row", "row"]}
+          borderRadius="12px"
           mb="12px"
         >
           <Text fontWeight="bold" padding="8px" paddingLeft="16px">
@@ -129,10 +129,10 @@ export default function Letter({ emails, subject, body }) {
           </Text>
           <Textarea
             paddingLeft={["12px", "12px", "2px", "2px"]}
-            borderRadius="8px"
             borderWidth="0px"
             resize="none"
             minHeight={["80px", "80px", "62px", "62px"]}
+            borderRadius="12px"
             value={subjectLine}
           ></Textarea>
           <Button
@@ -148,7 +148,7 @@ export default function Letter({ emails, subject, body }) {
           </Button>
         </Flex>
         <Flex
-          borderRadius="8px"
+          borderRadius="12px"
           backgroundColor="white"
           width="100%"
           flexDirection={["column", "column", "row", "row"]}
@@ -158,7 +158,7 @@ export default function Letter({ emails, subject, body }) {
             value={letter}
             resize="none"
             borderWidth="0px"
-            borderRadius="8px"
+            borderRadius="12px"
             minHeight={["240px", "200px", "160px", "140px"]}
           />
           <Button
@@ -178,37 +178,37 @@ export default function Letter({ emails, subject, body }) {
           pr={["0px", "0px", "8px", "8px"]}
           flexDirection={["column", "column", "row", "row"]}
         >
-          <Link
-            width="100%"
-            target="_blank"
-            href={buildGmailLink(emailsSemiColon, letter, subjectLine)}
-          >
+          <Box width="100%">
             <Button
+              as="a"
               fontWeight="bold"
               variantColor="red"
-              borderRadius="8px"
+              borderRadius="12px"
               width="100%"
               mr={["0px", "0px", "8px", "8px"]}
               mb="8px"
+              target="_blank"
+              href={buildGmailLink(emailsSemiColon, letter, subjectLine)}
             >
               Send With Gmail
             </Button>
-          </Link>
-          <Link
-            width="100%"
-            target="_blank"
-            href={buildMailTo(emailsComma, letter, subjectLine)}
-          >
-            <Button
-              fontWeight="bold"
-              variantColor="blue"
-              borderRadius="8px"
-              width="100%"
-              ml={["0px", "0px", "8px", "8px"]}
-            >
-              Send With Mail App
-            </Button>
-          </Link>
+          </Box>
+          <Box width="100%">
+            <motion.div>
+              <Button
+                as="a"
+                fontWeight="bold"
+                variantColor="blue"
+                borderRadius="12px"
+                width="100%"
+                target="_blank"
+                href={buildMailTo(emailsComma, letter, subjectLine)}
+                ml={["0px", "0px", "8px", "8px"]}
+              >
+                Send With Mail App
+              </Button>
+            </motion.div>
+          </Box>
         </Flex>
       </Box>
     </motion.div>
